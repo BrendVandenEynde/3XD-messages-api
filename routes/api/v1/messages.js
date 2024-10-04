@@ -46,13 +46,17 @@ router.get('/:id', (req, res, next) => {
 router.post('/', (req, res, next) => {
     const { user, text } = req.body.message; // Get user and text from the request body
 
-    // Add the message to the messages array
+    // Calculate the new ID based on the highest current ID
+    const newId = messages.length > 0 ? Math.max(...messages.map(msg => msg.id)) + 1 : 1;
+
+    // Create the new message object
     const newMessage = {
-        id: messages.length + 1, // Increment ID
+        id: newId,  
         user: user,
         message: text
     };
 
+    // Add the new message to the messages array
     messages.push(newMessage);
 
     res.status(201).json({
@@ -63,5 +67,7 @@ router.post('/', (req, res, next) => {
         }
     });
 });
+
+
 
 module.exports = router;
