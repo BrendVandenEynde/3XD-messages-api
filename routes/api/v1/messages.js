@@ -9,8 +9,8 @@ router.get('/', (req, res, next) => {
         message: 'GET messages!',
         data: {
             messages: [
-                { id: 1, title: "Hello", body: "World" },
-                { id: 2, title: "Food", body: "Bar" }
+                { id: 1, user: "Hello", message: "World" },
+                { id: 2, user: "Food", message: "Bar" }
             ]
         }
     });
@@ -21,7 +21,7 @@ router.post('/', (req, res, next) => {
     res.status(200).json({
         status: "success",
         message: 'POST messages!',
-        data: { message: { id: 3, title: "Hello", body: "World" } }
+        data: { message: { id: 3, user: "Hello", message: "World" } }
     });
 });
 
@@ -30,7 +30,7 @@ router.get('/:id', (req, res, next) => {
     res.status(200).json({
         status: "success",
         message: 'GET message!',
-        data: { message: { id: 1, title: "Hello", body: "World" } }
+        data: { message: { id: 1, user: "Hello", message: "World" } }
     });
 });
 
@@ -39,7 +39,7 @@ router.put('/:id', (req, res, next) => {
     res.status(200).json({
         status: "success",
         message: 'PUT message!',
-        data: { message: { id: 1, title: "Hello", body: "World" } }
+        data: { message: { id: 1, user: "Hello", message: "World" } }
     });
 });
 
@@ -48,7 +48,7 @@ router.delete('/:id', (req, res, next) => {
     res.status(200).json({
         status: "success",
         message: 'DELETE message!',
-        data: { message: { id: 1, title: "Hello", body: "World" } }
+        data: { message: { id: 1, user: "Hello", message: "World" } }
     });
 });
 
