@@ -9,8 +9,8 @@ router.get('/', (req, res, next) => {
         message: 'GET messages!',
         data: {
             messages: [
-                { id: 1, user: "Hello", message: "World" },
-                { id: 2, user: "Food", message: "Bar" }
+                { id: 1, user: "Joris", message: "We got this" },
+                { id: 2, user: "Arne", message: "Yes we do!" }
             ]
         }
     });
