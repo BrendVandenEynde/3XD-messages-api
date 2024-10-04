@@ -12,13 +12,27 @@ const messages = [
 
 // GET /api/v1/messages
 router.get('/', (req, res, next) => {
-    res.status(200).json({
-        status: "success",
-        message: 'GET messages!',
-        data: {
-            messages: messages
-        }
-    });
+    const user = req.query.user; // Get the user query parameter
+
+    if (user) {
+        const userMessages = messages.filter(msg => msg.user === user); // Filter messages by user
+
+        res.status(200).json({
+            status: "success",
+            message: 'GET messages by user ' + user,
+            data: {
+                messages: userMessages
+            }
+        });
+    } else {
+        res.status(200).json({
+            status: "success",
+            message: 'GET messages!',
+            data: {
+                messages: messages // Return all messages if no user query parameter is provided
+            }
+        });
+    }
 });
 
 // GET /api/v1/messages/:id
@@ -110,28 +124,6 @@ router.delete('/:id', (req, res, next) => {
         res.status(404).json({
             status: "error",
             message: "Message not found :c "
-        });
-    }
-});
-
-// GET: /api/v1/messages?user=username
-router.get('/', (req, res, next) => {
-    const user = req.query.user; // Get the user query parameter
-
-    if (user) {
-        const userMessages = messages.filter(msg => msg.user === user); // Filter messages by user
-
-        res.status(200).json({
-            status: "success",
-            message: 'GET messages by user ' + user,
-            data: {
-                messages: userMessages
-            }
-        });
-    } else {
-        res.status(400).json({
-            status: "error",
-            message: "User parameter is required"
         });
     }
 });
