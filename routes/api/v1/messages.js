@@ -5,14 +5,6 @@ const router = express.Router();
 //require messageController
 const messageController = require('../../../controllers/api/v1/message.js');
 
-// Sample data
-const messages = [
-    { id: 1, user: "Joris", message: "We got this" },
-    { id: 2, user: "Arne", message: "Yes we do!" },
-    { id: 3, user: "Brend", message: "Oh no..." },
-    { id: 4, user: "Roger", message: "We will be fine" },
-];
-
 // GET /api/v1/messages
 router.get('/', messageController.index);
 

@@ -1,3 +1,12 @@
+// Sample data moved from routes to the controller
+const messages = [
+    { id: 1, user: "Joris", message: "We got this" },
+    { id: 2, user: "Arne", message: "Yes we do!" },
+    { id: 3, user: "Brend", message: "Oh no..." },
+    { id: 4, user: "Roger", message: "We will be fine" },
+];
+
+// Controller methods
 const index = (req, res, next) => {
     const user = req.query.user; // Get the user query parameter
 
@@ -116,5 +125,5 @@ module.exports = {
     show,
     create,
     update,
-    delete: remove  
+    delete: remove
 };
