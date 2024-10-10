@@ -92,7 +92,7 @@ const update = (req, res, next) => {
     }
 };
 
-const destroy = (req, res, next) => {
+const remove = (req, res, next) => {
     const id = parseInt(req.params.id); // Parse the ID from the request parameters
     const messageIndex = messages.findIndex(msg => msg.id === id); // Find the index of the message by ID
 
@@ -101,12 +101,12 @@ const destroy = (req, res, next) => {
 
         res.status(200).json({
             status: "success",
-            message: 'Message is deleted! :) '
+            message: 'Message is deleted!'
         });
     } else {
         res.status(404).json({
             status: "error",
-            message: "Message not found :c "
+            message: "Message not found"
         });
     }
 };
@@ -116,5 +116,5 @@ module.exports = {
     show,
     create,
     update,
-    destroy
-}
+    delete: remove  
+};
